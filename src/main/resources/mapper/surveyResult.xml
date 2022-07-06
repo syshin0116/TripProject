@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="surveyResult">
+
+	<select id="allFromMember" parameterType="surveyResultVO" resultType="surveyResultVO">
+		select * from surveyresult where member_idx=#{member_idx} order by surveyresult_idx desc
+	</select>
+	
+	<select id="readOne" parameterType="surveyResultVO" resultType="surveyResultVO">
+		select * from surveyResult 
+	</select>
+
+	<select id="list" parameterType="surveyResultVO" resultType="surveyResultVO">
+		select * from surveyResult WHERE member_idx = #{member_idx}
+	</select>
+	
+	<delete id="delete" parameterType="surveyResultVO">
+		delete from surveyResult where surveyResult_idx = #{surveyResult_idx}
+	</delete>
+<!-- 	설문지 작성완료 후 MLt서버를 거쳐 SurveyResult Create
+		<insert id="create" parameterType="surveyResultVO">
+		insert into surveyResult values (#{surveyResult_idx}, #{member_idx}, #{surveyResult_date}, #{surveyResult_recommendation}, #{surveyResult_answers}, #{survey_idx}
+	</insert> -->
+<!--    SurveyResult는 임의로 수정 불가능
+		<update id="update" parameterType="surveyResultVO">
+		update surveyResult
+		set surveyResult_question = #{surveyResult_question}, surveyResult_choices = #{surveyResult_choices}
+		where surveyResult_idx = #{surveyResult_idx}
+	</update> -->
+</mapper>

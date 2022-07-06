@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="itineraryComment">
+	<select id="list" parameterType="itineraryCommentVO" resultType="itineraryCommentVO">
+		SELECT * FROM itinerarycomment WHERE itinerary_idx = #{itinerary_idx}
+	</select>
+
+	<delete id="delete" parameterType="itineraryCommentVO">
+		DELETE FROM itineraryComment WHERE
+		itineraryComment_idx = #{itineraryComment_idx}
+	</delete>
+	<insert id="create" parameterType="itineraryCommentVO">
+		INSERT INTO itineraryComment VALUES
+		(#{member_idx}, #{itineraryComment_rgstdate})
+	</insert>
+	<update id="update" parameterType="itineraryCommentVO">
+		update itineraryComment
+		set
+		itineraryComment_comment = #{itineraryComment_comment}
+	</update>
+		
+</mapper>
