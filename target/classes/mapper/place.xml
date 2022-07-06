@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="place">
+
+
+	<select id="list" parameterType="placeVO" resultType="placeVO">
+		select * from place where place_area = #{place_area}
+	</select>
+	
+	<select id="pDetail" parameterType="placeVO" resultType="placeVO">
+		select *
+		from place where place_idx = #{place_idx}
+	</select>
+	
+	<select id="selectOne" parameterType="placeVO" resultType="placeVO">
+		select * from place where place_idx=#{place_idx}
+	</select>
+	
+	<select id="slidelist" resultType="placeVO">
+		(select * from place order by place_view desc  limit 10)order by rand() limit 5;
+	</select>
+	
+	<select id="likelist" resultType="placeVO">
+		select * from place order by place_like desc limit 3;
+	</select>
+
+
+</mapper>
